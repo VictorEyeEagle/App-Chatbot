@@ -5,21 +5,25 @@ import { TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
 async function sendMessage(text) {
-    const response = await axios.post('http://localhost:3000/message', { text });
-    return response.data;
+    try {
+        const response = await axios.post('http://localhost:3000/message', { text });
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao enviar mensagem:', error);
+    }
 }
 
-
 export default function HomeRender() {
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([
+        { id: '1', text: 'Olá, sou o gpt, em que posso ajudar?' },
+    ]);
+    const [currentMessage, setCurrentMessage] = useState('');
 
-    useEffect(() => {
-        const newMessages = [];
-        for (let i = 1; i <= 50; i++) {
-            newMessages.push({ id: i.toString(), text: `Mensagem ${i}` });
-        }
-        setMessages(newMessages);
-    }, []);
+    const handleSend = async () => {
+        const gptReply = await sendMessage(currentMessage);
+        setMessages([...messages, { id: (messages.length + 1).toString(), text: currentMessage }, { id: (messages.length + 2).toString(), text: gptReply }]);
+        setCurrentMessage('');
+    };
 
     return (
         <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -31,8 +35,13 @@ export default function HomeRender() {
                 style={styles.messages}
             />
             <View style={styles.inputContainer}>
-                <TextInput style={styles.input} placeholder="Mensagem.." />
-                <TouchableOpacity style={styles.inputbotao}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Mensagem.."
+                    value={currentMessage}
+                    onChangeText={text => setCurrentMessage(text)}
+                />
+                <TouchableOpacity style={styles.inputbotao} onPress={handleSend}>
                     <Image style={styles.inputimg} source={require("./style/5373244.png")} />
                 </TouchableOpacity>
             </View>
@@ -87,8 +96,6 @@ const styles = StyleSheet.create({
     inputbotao: {
         position: "absolute",
         left: 320,
-        top: 35
+        top: 35,
     }
-
 });
-
