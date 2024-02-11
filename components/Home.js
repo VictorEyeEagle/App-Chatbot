@@ -7,9 +7,11 @@ import axios from 'axios';
 async function sendMessage(text) {
     try {
         const response = await axios.post('http://localhost:3000/message', { text });
+        console.log(response.data)
         return response.data;
     } catch (error) {
         Alert.alert('Erro ao enviar mensagem:', error.message);
+        console.error('Erro ao enviar mensagem:', error.response.data, error.message);
     }
 }
 
