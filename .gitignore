@@ -36,3 +36,4 @@ yarn-error.*
 
 # server
 server.js
+.env

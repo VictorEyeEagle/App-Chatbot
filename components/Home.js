@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from "expo-status-bar";
-import { TextInput, StyleSheet, Text, KeyboardAvoidingView, FlatList, View, Image } from "react-native";
+import { TextInput, StyleSheet, Text, KeyboardAvoidingView, FlatList, View, Image, Alert } from "react-native";
 import { TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ async function sendMessage(text) {
         const response = await axios.post('http://localhost:3000/message', { text });
         return response.data;
     } catch (error) {
-        console.error('Erro ao enviar mensagem:', error);
+        Alert.alert('Erro ao enviar mensagem:', error.message);
     }
 }
 
@@ -49,6 +49,7 @@ export default function HomeRender() {
     )
 }
 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -72,11 +73,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: -1,
         right: 1,
-        backgroundColor: "brown",
         paddingBottom: 20,
         paddingLeft: 20,
         paddingRight: 50,
         paddingTop: 30,
+        opacity: 1.0,
 
     },
     input: {
