@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from "expo-status-bar";
 import { TextInput, StyleSheet, Text, KeyboardAvoidingView, FlatList, View, Image, Alert } from "react-native";
 import { TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
+const SERVER_URL = 'http://localhost:3000/message';
+
 async function sendMessage(text) {
     try {
-        const response = await axios.post('http://localhost:3000/message', { text });
-        console.log(response.data)
+        const response = await axios.post(SERVER_URL, { text });
         return response.data;
     } catch (error) {
         Alert.alert('Erro ao enviar mensagem:', error.message);
-        console.error('Erro ao enviar mensagem:', error.response.data, error.message);
+        
     }
 }
 
