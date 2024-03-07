@@ -1,23 +1,23 @@
-# Chatbot em React Native
+# Chatbot in React Native
 
-Este é um projeto de um chatbot desenvolvido em React Native. O chatbot utiliza a API da OpenAI para gerar respostas automáticas e armazena as mensagens no MongoDB.
+This is a project of a chatbot developed in React Native. The chatbot utilizes the OpenAI API to generate automatic responses and stores messages in MongoDB.
 
-## 🛠️ Tecnologias e Ferramentas
+## 🛠️ Technologies and Tools
 
-- **Linguagem de Programação**: JavaScript
+- **Programming Language**: JavaScript
 - **Framework**: React Native
-- **Banco de Dados**: MongoDB
+- **Database**: MongoDB
 - **API**: OpenAI
 
-## 📚 Como funciona
+## 📚 How it Works
 
-O chatbot funciona enviando mensagens do usuário para um servidor express, que por sua vez faz uma requisição para a API da OpenAI. A resposta da API é então enviada de volta para o aplicativo e exibida na interface do usuário.
+The chatbot works by sending user messages to an Express server, which then makes a request to the OpenAI API. The API's response is then sent back to the application and displayed in the user interface.
 
-As mensagens são armazenadas no MongoDB, um banco de dados NoSQL orientado a documentos. Cada mensagem é armazenada como um documento no banco de dados, com campos para o texto da mensagem e o horário em que foi enviada.
+Messages are stored in MongoDB, a document-oriented NoSQL database. Each message is stored as a document in the database, with fields for the message text and the time it was sent.
 
-## 🚀 Executando o projeto
+## 🚀 Running the Project
 
-1. Clone este repositório
-2. Instale as dependências com `npm install`
-3. Inicie o servidor com `node server.js`
-4. Inicie o aplicativo com `expo start`
+1. Clone this repository
+2. Install dependencies with `npm install`
+3. Start the server with `node server.js`
+4. Start the application with `expo start`
