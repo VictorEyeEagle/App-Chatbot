@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     inputbotao: {
         position: "absolute",
         left: 320,
-        top: 35
- ,
+        top: 35,
     }
 });
